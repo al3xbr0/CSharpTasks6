@@ -1,65 +1,73 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ATM
 {
     public class ATM
     {
-        private readonly int sum;
-        private readonly List<int> values; //
-        private readonly int valsNum;
+        public const string ERROR_MESSAGE = "ERROR: All inputs must be positive and integer!";
+
+        private int sum;
+        private readonly List<int> values;
+
+        public string Sum
+        {
+            set
+            {
+                try
+                {
+                    sum = Convert.ToInt32(value);
+                }
+                catch (FormatException)
+                {
+                    throw new ArgumentException(ERROR_MESSAGE);
+                }
+                if (sum <= 0)
+                {
+                    throw new ArgumentException(ERROR_MESSAGE);
+                }
+            }
+        }
+        public string[] Vals
+        {
+            set
+            {
+                try
+                {
+                    List<int> converted = Array.ConvertAll(value, Convert.ToInt32).ToList();
+                    converted = converted.Distinct().ToList();
+                    converted.ForEach(v => { if (v <= 0) throw new ArgumentException(ERROR_MESSAGE); });
+                    values.AddRange(converted);
+                }
+                catch (FormatException)
+                {
+                    throw new ArgumentException(ERROR_MESSAGE);
+                }
+                values.Sort();
+            }
+        }
+
+        private int valsNum;
         private int[] valsAmounts;
         private int count;
 
-        private readonly string separator;
+        private string separator;
         public bool formattedOutput;
 
-        public ATM(string sum, string[] vals)
+        public ATM()
         {
             values = new List<int>();
-
-            try
-            {
-                this.sum = Convert.ToInt32(sum);
-                if (this.sum <= 0)
-                {
-                    throw new ArgumentException("ERROR: Sum and Values must be positive!");
-                }
-
-                foreach (string val in vals)
-                {
-                    int v = Convert.ToInt32(val);
-                    if (v <= 0)
-                    {
-                        throw new ArgumentException("ERROR: Sum and Values must be positive!");
-                    }
-                    if (!values.Contains(v))
-                    {
-                        values.Add(v);
-                    }
-                }
-
-            }
-            catch (FormatException)
-            {
-                throw new ArgumentException("ERROR: Invalid input!");
-            }
-
-            values.Sort();
-            valsNum = values.Count;
-            separator = $"+----------+{string.Concat(Enumerable.Repeat("----------+", valsNum))}\n";
         }
 
         public int Solve(bool formattedOutput)
         {
+            valsNum = values.Count;
+            separator = $"+----------+{string.Concat(Enumerable.Repeat("----------+", valsNum))}\n";
+            this.formattedOutput = formattedOutput;
             count = 0;
             valsAmounts = new int[valsNum];
 
-            this.formattedOutput = formattedOutput;
-            
             if (formattedOutput)
             {
                 Console.Write(separator);
@@ -136,4 +144,3 @@ namespace ATM
         }
     }
 }
-   
