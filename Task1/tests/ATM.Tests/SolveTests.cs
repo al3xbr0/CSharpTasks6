@@ -20,7 +20,7 @@ namespace ATM.Tests
         [Test]
         public void Test1()
         {
-            task = new ATM("5", new string[] { "3", "2" });
+            task = new ATM { Sum = "5", Vals = new string[] { "3", "2" } };
             task.Solve(false);
             string[] expected = { "2 3", "1 combinations in total" };
             string[] actual = writer.ToString().Split($" {Environment.NewLine}");
@@ -30,7 +30,7 @@ namespace ATM.Tests
         [Test]
         public void Test2()
         {
-            task = new ATM("5", new string[] { "1", "2" });
+            task = new ATM { Sum = "5", Vals = new string[] { "1", "2" } };
             task.Solve(false);
             string[] expected = { "1 2 2", "1 1 1 2", "1 1 1 1 1", "3 combinations in total" };
             string[] actual = writer.ToString().Split($" {Environment.NewLine}");
@@ -40,7 +40,7 @@ namespace ATM.Tests
         [Test]
         public void Test3()
         {
-            task = new ATM("10", new string[] { "5", "1", "2" });
+            task = new ATM { Sum = "10", Vals = new string[] { "5", "1", "2" } };
             task.Solve(false);
             string[] expected = { "5 5", "2 2 2 2 2", "1 2 2 5", "1 1 2 2 2 2",
                 "1 1 1 2 5", "1 1 1 1 2 2 2", "1 1 1 1 1 5", "1 1 1 1 1 1 2 2",
