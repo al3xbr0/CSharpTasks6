@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinCalc", "src\BinCalc\BinCalc.csproj", "{E9DD2930-810E-4AA6-8678-7A0D39E787CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9DD2930-810E-4AA6-8678-7A0D39E787CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9DD2930-810E-4AA6-8678-7A0D39E787CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9DD2930-810E-4AA6-8678-7A0D39E787CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9DD2930-810E-4AA6-8678-7A0D39E787CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDAAA45F-D86A-4F77-B53B-D4EE602BBA65}
+	EndGlobalSection
+EndGlobal
